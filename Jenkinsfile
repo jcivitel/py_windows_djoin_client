@@ -1,5 +1,8 @@
 pipeline {
     agent any
+	parameters {
+		choice(name: 'PLATFORM', choices: ['linux', 'windows', 'ios', 'android'], description: 'Pick a Platform')
+	}
     stages {
 		stage('Python Enviroment'){
 			steps {
@@ -17,45 +20,30 @@ pipeline {
 				"""
 			}
 		}
-		stage('Build Linux'){
+		stage('Create Image'){
 			steps {
 				sh """
 					. venv/bin/activate
 					cd djoinclient
-					briefcase create linux
-				"""
-				
-				sh """
-					. venv/bin/activate
-					cd djoinclient
-					briefcase build linux
-				"""
-				
-				sh """
-					. venv/bin/activate
-					cd djoinclient
-					briefcase package linux
+					briefcase create ${PLATFORM}
 				"""
 			}
 		}
-		stage('Build Windows'){
+		stage('Build Image'){
 			steps {
 				sh """
 					. venv/bin/activate
 					cd djoinclient
-					briefcase create windows
+					briefcase build ${PLATFORM}
 				"""
-				
+			}
+		}
+		stage('Create Package'){
+			steps {
 				sh """
 					. venv/bin/activate
 					cd djoinclient
-					briefcase build windows
-				"""
-				
-				sh """
-					. venv/bin/activate
-					cd djoinclient
-					briefcase package windows
+					briefcase package ${PLATFORM}
 				"""
 			}
 		}
