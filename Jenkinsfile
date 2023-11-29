@@ -25,15 +25,13 @@ pipeline {
         		cd djoinclient
 				briefcase create debian:bookworm
 			"""
-		}
-		steps {
+			
 			sh """
        			. venv/bin/activate
         		cd djoinclient
 				briefcase build debian:bookworm
 			"""
-		}
-		steps {
+			
 			sh """
        			. venv/bin/activate
         		cd djoinclient
@@ -48,15 +46,13 @@ pipeline {
         		cd djoinclient
 				briefcase create windows
 			"""
-		}
-		steps {
+			
 			sh """
        			. venv/bin/activate
         		cd djoinclient
 				briefcase build windows
 			"""
-		}
-		steps {
+			
 			sh """
        			. venv/bin/activate
         		cd djoinclient
