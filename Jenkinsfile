@@ -4,7 +4,6 @@ pipeline {
 		stage('Python Enviroment'){
 			steps {
 				sh """
-					cleanWs()
 					python3 -m venv venv
 					chmod +x venv/bin/activate
 				"""
@@ -57,6 +56,13 @@ pipeline {
 					. venv/bin/activate
 					cd djoinclient
 					briefcase package windows
+				"""
+			}
+		}
+		stage('Move and Cleanup'){
+			steps {
+				sh """
+					cleanWs()
 				"""
 			}
 		}
