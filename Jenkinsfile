@@ -18,24 +18,24 @@ pipeline {
 			"""
 		}
 	}
-	stage('Build Debian Bookworm'){
+	stage('Build Linux'){
 		steps {
 			sh """
        			. venv/bin/activate
         		cd djoinclient
-				briefcase create debian:bookworm
+				briefcase create linux
 			"""
 			
 			sh """
        			. venv/bin/activate
         		cd djoinclient
-				briefcase build debian:bookworm
+				briefcase build linux
 			"""
 			
 			sh """
        			. venv/bin/activate
         		cd djoinclient
-				briefcase package debian:bookworm
+				briefcase package linux
 			"""
 		}
 	}
