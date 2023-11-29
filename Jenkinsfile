@@ -4,6 +4,7 @@ pipeline {
 	stage('Python Enviroment'){
 		steps {
 			sh """
+				
 				python3 -m venv venv
 				chmod +x venv/bin/activate
 			"""
@@ -17,30 +18,49 @@ pipeline {
 			"""
 		}
 	}
-	stage('Create Application'){
+	stage('Build Debian Bookworm'){
 		steps {
 			sh """
        			. venv/bin/activate
         		cd djoinclient
-				briefcase create
+				briefcase create debian:bookworm
+			"""
+		}
+		steps {
+			sh """
+       			. venv/bin/activate
+        		cd djoinclient
+				briefcase build debian:bookworm
+			"""
+		}
+		steps {
+			sh """
+       			. venv/bin/activate
+        		cd djoinclient
+				briefcase package debian:bookworm
 			"""
 		}
 	}
-	stage('Build Application'){
+	stage('Build Windows'){
 		steps {
 			sh """
        			. venv/bin/activate
         		cd djoinclient
-				briefcase build
+				briefcase create windows
 			"""
 		}
-	}
-	stage('Build Package'){
 		steps {
 			sh """
        			. venv/bin/activate
         		cd djoinclient
-				briefcase package
+				briefcase build windows
+			"""
+		}
+		steps {
+			sh """
+       			. venv/bin/activate
+        		cd djoinclient
+				briefcase package windows
 			"""
 		}
 	}
