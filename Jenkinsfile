@@ -47,12 +47,21 @@ pipeline {
 				"""
 			}
 		}
-		stage('Move and Cleanup'){
+		stage('Tag and Upload'){
 			steps {
 				sh """
-					cleanWs()
+					
 				"""
 			}
 		}
     }
+	post{
+	failure{
+		sh """
+			sleep 5
+		"""
+	}
+	cleanup{
+		cleanWs()
+	}
 }
