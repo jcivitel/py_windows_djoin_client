@@ -56,12 +56,13 @@ pipeline {
 		}
     }
 	post{
-	failure{
-		sh """
-			sleep 5
-		"""
-	}
-	cleanup{
-		cleanWs()
+		failure{
+			sh """
+				sleep 5
+			"""
+		}
+		cleanup{
+			cleanWs()
+		}
 	}
 }
