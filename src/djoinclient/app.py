@@ -29,7 +29,7 @@ class DjoinClient(toga.App):
 
         log_box = toga.Box(style=Pack(direction=ROW, padding=5))
         self.log_output = toga.MultilineTextInput(
-            style=Pack(flex=1, padding_bottom=20), readonly=True
+            style=Pack(flex=1, padding_bottom=20, height=500), readonly=True
         )
         log_box.add(self.log_output)
 
@@ -45,7 +45,9 @@ class DjoinClient(toga.App):
         main_box.add(commit_btn)
         main_box.add(log_box)
 
-        self.log_output.value = f"{self.log_output.value}Loading C:\\Deploy\\Deploy.ini\n"
+        self.log_output.value = (
+            f"{self.log_output.value}Loading C:\\Deploy\\Deploy.ini\n"
+        )
         self.log_output.scroll_to_bottom()
         config = load_ini(self.log_output, "C:\\Deploy\\")
 
