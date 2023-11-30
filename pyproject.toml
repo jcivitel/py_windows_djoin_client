@@ -20,18 +20,14 @@ test_sources = [
     "tests",
 ]
 
-requires = [
-]
+requires = []
 test_requires = [
     "pytest",
 ]
 
 [tool.briefcase.app.djoinclient.macOS]
 universal_build = true
-requires = [
-    "toga-cocoa~=0.4.0",
-    "std-nslog~=1.0.0"
-]
+requires = ["toga-cocoa~=0.4.0", "std-nslog~=1.0.0"]
 
 [tool.briefcase.app.djoinclient.linux]
 requires = [
@@ -87,7 +83,8 @@ system_runtime_requires = [
     # Needed to provide GTK
     "gtk3",
     # Needed to support Python bindings to GTK
-    "gobject-introspection", "typelib(Gtk)=3.0",
+    "gobject-introspection",
+    "typelib(Gtk)=3.0",
     # Dependencies that GTK looks for at runtime
     "libcanberra-gtk3-0",
     # Needed to provide WebKit2 at runtime
@@ -154,15 +151,10 @@ requires = [
 
 # Mobile deployments
 [tool.briefcase.app.djoinclient.iOS]
-requires = [
-    "toga-iOS~=0.4.0",
-    "std-nslog~=1.0.0"
-]
+requires = ["toga-iOS~=0.4.0", "std-nslog~=1.0.0"]
 
 [tool.briefcase.app.djoinclient.android]
-requires = [
-    "toga-android~=0.4.0"
-]
+requires = ["toga-android~=0.4.0"]
 
 # Web deployments
 [tool.briefcase.app.djoinclient.web]
