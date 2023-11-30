@@ -3,10 +3,9 @@
 project_name = "Djoin-Client"
 bundle = "de.civitelli.djoin"
 version = "0.0.1"
-url = "https://djoin.civitelli.de/djoinclient"
+url = "https://github.com/jcivitel/py_windows_djoin_client"
 license = "GNU General Public License v3 (GPLv3)"
 author = "Jan Civitelli Benso"
-author_email = "jan@civitelli.de"
 
 [tool.briefcase.app.djoinclient]
 formal_name = "Djoin-Client"
