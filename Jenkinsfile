@@ -24,7 +24,6 @@ pipeline {
 			steps {
 				sh """
 					. venv/bin/activate
-					cd djoinclient
 					briefcase create ${PLATFORM}
 				"""
 			}
@@ -33,7 +32,6 @@ pipeline {
 			steps {
 				sh """
 					. venv/bin/activate
-					cd djoinclient
 					briefcase build ${PLATFORM}
 				"""
 			}
@@ -42,7 +40,6 @@ pipeline {
 			steps {
 				sh """
 					. venv/bin/activate
-					cd djoinclient
 					briefcase package ${PLATFORM}
 				"""
 			}
